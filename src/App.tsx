@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider } from './hooks/useAuth';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { SetupWarning } from './components/SetupWarning';
+import LandingPage from './pages/LandingPage';
 import { AuthPage } from './pages/AuthPage';
 import { AppPage } from './pages/AppPage';
 import { config } from './config';
@@ -35,6 +36,7 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Routes>
+            <Route path="/" element={<LandingPage />} />
             <Route path="/auth" element={<AuthPage />} />
             <Route
               path="/app"
@@ -44,7 +46,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="/" element={<Navigate to="/app" replace />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
